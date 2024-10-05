@@ -1,0 +1,7 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.thwdtp-input-field-wrapper .select2-container{
+ 	width:100% !important;
+ }
