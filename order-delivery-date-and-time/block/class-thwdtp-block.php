@@ -49,23 +49,29 @@ class THWDTP_Block {
         $pickup_date   = isset($request_data['orderPickupDate']) ? $request_data['orderPickupDate'] : '';
         $pickup_time   = isset($request_data['orderPickupTime']) ? $request_data['orderPickupTime'] : '';
 
+        $shipping_method = $this->get_shipping_method( $order );
+        
         if(apply_filters('thwdtp_convert_utc_to_wp_timezone', true)){
             $delivery_date = $delivery_date ? $this->convert_to_wp_timezone($delivery_date) : '';
             $pickup_date = $pickup_date ? $this->convert_to_wp_timezone($pickup_date) : '';
         }
 
-        if($delivery_date || $delivery_time){
+        if($shipping_method === 'pickup_location' || $shipping_method === 'local_pickup'){
+            if($pickup_date || $pickup_time){
 
-            $order->update_meta_data('thwdtp_order_type', 'delivery');
-            // $delivery_date = $delivery_date ? $delivery_date ; '';
-            $order->update_meta_data('thwdtp_delivery_datepicker', $delivery_date);
-            $order->update_meta_data('thwdtp_delivery_time', $delivery_time);
+                $order->update_meta_data('thwdtp_order_type', 'pickup');
+                $order->update_meta_data('thwdtp_pickup_datepicker', $pickup_date);
+                $order->update_meta_data('thwdtp_pickup_time', $pickup_time);
+            }
+        }else{
+            if($delivery_date || $delivery_time){
 
-        }else if($pickup_date || $pickup_time){
-
-            $order->update_meta_data('thwdtp_order_type', 'pickup');
-            $order->update_meta_data('thwdtp_pickup_datepicker', $pickup_date);
-            $order->update_meta_data('thwdtp_pickup_time', $pickup_time);
+                $order->update_meta_data('thwdtp_order_type', 'delivery');
+                // $delivery_date = $delivery_date ? $delivery_date ; '';
+                $order->update_meta_data('thwdtp_delivery_datepicker', $delivery_date);
+                $order->update_meta_data('thwdtp_delivery_time', $delivery_time);
+    
+            }
         }
         $order->save();
     }
@@ -76,6 +82,14 @@ class THWDTP_Block {
         $datetime->setTimezone($site_timezone);
         $site_time_str = wp_date('Y-m-d H:i:s', $datetime->getTimestamp());
         return $site_time_str;
+    }
+
+    public function get_shipping_method( $order ){
+        $names = array();
+        foreach ( $order->get_shipping_methods() as $shipping_method ) {
+			$names[] = $shipping_method->get_method_id();
+		}
+        return implode( ', ', $names );
     }
 
 }

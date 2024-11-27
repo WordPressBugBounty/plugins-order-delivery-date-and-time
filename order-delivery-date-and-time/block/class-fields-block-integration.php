@@ -25,14 +25,16 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 		$this->pickup_location_enable = wc_string_to_bool( $pickup_location_settings['enabled'] ?? 'no' );
 
 		$this->register_delivery_block_frontend_scripts();
+		$this->register_delivery_block_frontend_styles();
 		$this->register_delivery_block_editor_scripts();
-		$this->register_block_editor_styles();
+		//$this->register_block_editor_styles();
 
 		if($this->pickup_location_enable){
 
 			$this->register_pickup_block_frontend_scripts();
 			$this->register_pickup_block_editor_scripts();
-			$this->register_pickup_block_editor_styles();
+			//$this->register_pickup_block_editor_styles();
+			$this->register_pickup_block_frontend_styles();
 		}
 
 		$this->register_main_integration();
@@ -72,7 +74,7 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 	public function get_script_data() {
 		$data = [
 			'order-fields-block-active' => true,
-			'local_pickup' => 'enabled',
+			'th_local_pickup' => 'enabled',
 		];
 
 		return $data;
@@ -193,6 +195,27 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 		);
 	}
 
+	public function register_delivery_block_frontend_styles(){
+		// $style_path = '/assets/dist/style-delivery-fields-frontend.css';
+
+		// $style_url = plugins_url( $style_path, __FILE__ );
+		// wp_enqueue_style(
+		// 	'delivery-fields-block-frontend',
+		// 	$style_url,
+		// 	[],
+		// 	$this->get_file_version( $style_path )
+		// );
+
+		$dpicker_style_path = '/assets/dist/delivery-fields-frontend.css';
+		$dpicker_style_url = plugins_url( $dpicker_style_path, __FILE__ );
+		wp_enqueue_style(
+			'delivery-fields-datepicker',
+			$dpicker_style_url,
+			[],
+			$this->get_file_version( $dpicker_style_path)
+		);
+	}
+
 	public function register_delivery_block_frontend_scripts() {
 
 		$script_path       = '/assets/dist/delivery-fields-frontend.js';
@@ -223,6 +246,27 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 		// 	'holidays'             => 'holidays',
 		// );
 		// wp_localize_script('order-fields-block-frontend','thwdtp_public_var', $wdtp_var);
+	}
+
+	public function register_pickup_block_frontend_styles(){
+		$style_path = '/assets/dist/style-pickup-fields-frontend.css';
+
+		$style_url = plugins_url( $style_path, __FILE__ );
+		wp_enqueue_style(
+			'pickup-fields-block-frontend',
+			$style_url,
+			[],
+			$this->get_file_version( $style_path )
+		);
+
+		$dpicker_style_path = '/assets/dist/pickup-fields-frontend.css';
+		$dpicker_style_url = plugins_url( $dpicker_style_path, __FILE__ );
+		wp_enqueue_style(
+			'pickup-fields-datepicker',
+			$dpicker_style_url,
+			[],
+			$this->get_file_version( $dpicker_style_path )
+		);
 	}
 
 	public function register_pickup_block_frontend_scripts() {

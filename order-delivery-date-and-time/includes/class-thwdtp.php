@@ -62,16 +62,16 @@ class THWDTP {
 		$this->plugin_name = 'order-delivery-date-and-time';
 
 		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
-		$this->loader->add_action( 'init', $this, 'init' );
 		$this->define_block_hooks();
 
+		add_action( 'init', array($this, 'init' ));
 	}
 
 	public function init(){
+		$this->set_locale();
 		$this->define_constants();
+		$this->define_admin_hooks();
+		$this->define_public_hooks();
 	}
 	
 	private function define_constants(){
@@ -92,7 +92,7 @@ class THWDTP {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-thwdtp-loader.php';
+		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-thwdtp-loader.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -106,7 +106,7 @@ class THWDTP {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-thwdtp-public.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/utils/class-thwdtp-utils.php';
 
-		$this->loader = new THWDTP_Loader();
+		//$this->loader = new THWDTP_Loader();
 
 	}
 
@@ -143,14 +143,14 @@ class THWDTP {
 
 		$plugin_admin = new THWDTP_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles_and_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		$this->loader->add_filter( 'woocommerce_screen_ids', $plugin_admin, 'add_screen_id' );
-		$this->loader->add_filter( 'plugin_action_links_'.THWDTP_BASE_NAME, $plugin_admin, 'plugin_action_links' );
+		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles_and_scripts' ));
+		add_action( 'admin_menu', array( $plugin_admin, 'admin_menu'));
+		add_filter( 'woocommerce_screen_ids', array( $plugin_admin, 'add_screen_id' ));
+		add_filter( 'plugin_action_links_'.THWDTP_BASE_NAME, array( $plugin_admin, 'plugin_action_links' ));
 		//$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'plugin_row_meta', 10, 2 );
 		$wdtp_data = THWDTP_Admin_Settings_General::instance();
-		$this->loader->add_action( 'wp_ajax_thwdtp_save_settings',$wdtp_data, 'thwdtp_save_settings');
-		$this->loader->add_action( 'wp_ajax_thwdtp_get_specific_dates',$wdtp_data, 'get_specific_dates');
+		add_action( 'wp_ajax_thwdtp_save_settings', array( $wdtp_data, 'thwdtp_save_settings'));
+		add_action( 'wp_ajax_thwdtp_get_specific_dates', array( $wdtp_data, 'get_specific_dates'));
 	}
 
 	/**
@@ -164,7 +164,7 @@ class THWDTP {
 
 		$plugin_public = new THWDTP_Public( $this->get_plugin_name(), $this->get_version() );
 		
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles_and_scripts' );
+		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles_and_scripts' ));
 	}
 
 	private function define_block_hooks(){

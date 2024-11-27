@@ -3,9 +3,9 @@ Contributors: ThemeHigh
 Donate link: https://themehigh.com/
 Tags: Order Delivery Date, WooCommerce Delivery Slots, WooCommerce Pickup Date, WooCommerce Delivery Time, Time Planner
 Requires at least: 5.3
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,8 @@ Don't keep your shoppers worried about their order delivery. A systematic order 
 
 == How it works ==
 The Order Delivery | Pickup Date And Time Planner For Woocommerce plugin allows your customers to pick their preferred delivery/pickup date and time from the checkout page. The admin has the privilege to choose any unavailable days for delivery/pickup service, and to add specific days to set separate slots for those days. Depending on the needs of the store owner, bulk or individual slots can be specified.
+
+ **Block Compatible →** This plugin is designed to work with the WooCommerce Checkout Blocks. It seamlessly enables all delivery and pickup date and time features using the block compatibility feature
 
 == Date Planner for Easy Delivery ==
 *	Enable the delivery date picker option to activate the delivery date on your store’s checkout page.
@@ -73,6 +75,8 @@ Pickup Date settings are similar to Delivery Date settings.
 *	Set a position for the delivery/pickup field on the checkout page.
 *	Provide a suitable name for the delivery/pickup field on the checkout page.
 
+You can now get these features to work well on your checkout page by taking advantage of our **block integration!**
+
 Explore [Themehighs' other plugins](https://www.themehigh.com/plugins/?utm_source=wordpress&utm_medium=referral&utm_content=tracking), and get to know about our team and how we help develop great e-commerce sites. 
 
 Join [Themehigh Community](https://www.facebook.com/groups/themehigh/) to get help from similar people
@@ -91,6 +95,11 @@ Join [Themehigh Community](https://www.facebook.com/groups/themehigh/) to get he
 10. Other settings
 
 == Changelog ==
+
+= 1.1.0 =
+* Improved the Timepicker block in the Checkout block.
+* Added WooCommerce 9.4 compatibility.
+* Added WordPress 6.7 compatibility.
 
 = 1.0.9 =
 * Added WooCommerce 9.2 compatibility.

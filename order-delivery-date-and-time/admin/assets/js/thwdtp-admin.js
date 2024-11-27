@@ -115,6 +115,7 @@ var thwdtp_base = ( function ( $, window, document ) {
 function thwdtpCloseModal( elm ) {
 	thwdtp_base.form_wizard_close( elm );
 }
+
 var thwdtp_settings = ( function ( $, window, document ) {
 	'use strict';
 	var DELIVERY_DATE_PROPS = {

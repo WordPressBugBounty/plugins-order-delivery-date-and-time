@@ -270,6 +270,19 @@ abstract class THWDTP_Admin_Settings {
 						<?php
 					}
 					break;
+				case 'description':
+					?>
+					<tr>
+					<td colspan="2">
+					<?php
+					if ( ! empty( $value['description'] ) ) {
+						echo '<h4>' . esc_html( $value['description'] ) . '</h4>';
+					}
+					?>
+					</td>
+					</tr>
+
+					<?php
 				// Default: run an action.
 				default:
 					do_action( 'thwdtp_admin_field_' . $value['type'], $value );

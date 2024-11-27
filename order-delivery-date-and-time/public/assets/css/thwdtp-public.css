@@ -5,3 +5,13 @@
 .thwdtp-input-field-wrapper .select2-container{
  	width:100% !important;
  }
+.react-datepicker-wrapper {
+	width: 100%;
+}
+
+.wp-block-th-pickup-date .react-datepicker-popper {
+    z-index: 3;
+}
+.wp-block-th-delivery-date .react-datepicker-popper {
+    z-index: 3;
+}

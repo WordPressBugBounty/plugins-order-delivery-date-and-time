@@ -233,14 +233,15 @@ class THWDTP_Admin_Settings_General extends THWDTP_Admin_Settings{
 		);
 
 		return array(
+			
 
 			array('label'=>__('Other Settings', 'order-delivery-date-and-time'), 'type'=>'title', 'id' => 'common_settings'),
+			array('type' => 'select', 'id'=>'time_formats', 'label'=>__('Time Format', 'order-delivery-date-and-time'),'value' => 'twelve_hour', 'options'=>$time_formats ),
+			array('description'=>__('The functions below are for the classic checkout and do not work with the WooCommerce block', 'order-delivery-date-and-time'), 'type'=>'description', 'id' => 'common_settings'),
 			array('type'=>'text', 'id'=>'section_name', 'label'=>__('Section Heading', 'order-delivery-date-and-time'),),
 			array('type' => 'select', 'id'=>'field_positions', 'label'=>__('Field Position', 'order-delivery-date-and-time'),'value' => '', 'options'=>$positions, ),
 
 			array('id'=>'enable_on_shipping_method', 'label'=>__("Enable Fields Based on Shipping Method",'order-delivery-date-and-time'),'type'=>'checkbox', 'default' => 'no'),
-
-			array('type' => 'select', 'id'=>'time_formats', 'label'=>__('Time Format', 'order-delivery-date-and-time'),'value' => 'twelve_hour', 'options'=>$time_formats ),
 
 			array( 'type' => 'sectionend','id' => 'common_settings',),
 		);

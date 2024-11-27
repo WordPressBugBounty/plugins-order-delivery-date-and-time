@@ -22,7 +22,7 @@ class THWDTP_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		
-		add_action('after_setup_theme', array($this, 'define_public_hooks'));
+		add_action('init', array($this, 'define_public_hooks'),20);
 	}
 
 	public function enqueue_styles_and_scripts() {
@@ -94,6 +94,8 @@ class THWDTP_Public {
 			'enable_pickup_time'   => $enable_pickup_time,
 			'based_on_shipping'    => $based_on_shipping_method,
 			'today_date_str'       => $wp_now->format('Y-m-d'),
+			'enable_specific_dates_only' =>  apply_filters('thwdtp_delivery_date_disabled_dates', false),
+			'default_locale'               => apply_filters('thwdtp_react_date_picker_locale','en'),
 		);
 
 		wp_localize_script('thwdtp-public-script','thwdtp_public_var', $wdtp_var);	

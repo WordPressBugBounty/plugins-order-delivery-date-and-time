@@ -257,7 +257,8 @@ var thwdtp_public = ( function ( $, window, document ) {
 		}
 
 		var holidays = thwdtp_public_var.holidays,
-			spec_days = thwdtp_public_var.specific_dates;
+			spec_days = thwdtp_public_var.specific_dates,
+			enable_specific_dates_only = thwdtp_public_var.enable_specific_dates_only;
 
 		if ( enable_delivery_date ) {
 			var args = {
@@ -297,6 +298,11 @@ var thwdtp_public = ( function ( $, window, document ) {
 						if ( spec_days ) {
 							if ( $.inArray( c_date, spec_days ) != -1 ) {
 								test = false;
+							}
+						}
+						if(spec_days && enable_specific_dates_only){
+							if ( $.inArray( c_date, spec_days ) == -1 ) {
+								test = true;
 							}
 						}
 						return test;
