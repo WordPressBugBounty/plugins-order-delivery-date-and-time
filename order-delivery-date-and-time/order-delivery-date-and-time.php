@@ -5,13 +5,14 @@
  * Plugin Name:       Order Delivery Date and Time
  * Plugin URI:        https://themehigh.com/order-delivery-date
  * Description:       Organize your order delivery with ease, with a simple order/pickup date-time planner for your store.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            ThemeHigh
  * Author URI:        https://themehigh.com/
  * Text Domain:       order-delivery-date-and-time
  * Domain Path:       /languages
+ * Requires Plugins: woocommerce
  * WC requires at least: 5.0.0
- * WC tested up to: 9.4
+ * WC tested up to: 10.1
  */
 
 if(!defined('WPINC')){	die; }
@@ -28,7 +29,7 @@ if (!function_exists('is_woocommerce_active')){
 
 if(is_woocommerce_active()) {
 
-	define( 'THWDTP_VERSION', '1.1.0' );
+	define( 'THWDTP_VERSION', '1.1.1' );
 	!defined('THWDTP_SOFTWARE_TITLE') && define('THWDTP_SOFTWARE_TITLE', 'Order Delivery Date and Time');
 	!defined('THWDTP_FILE') && define('THWDTP_FILE', __FILE__);
 	!defined('THWDTP_PATH') && define('THWDTP_PATH', plugin_dir_path( __FILE__ ));

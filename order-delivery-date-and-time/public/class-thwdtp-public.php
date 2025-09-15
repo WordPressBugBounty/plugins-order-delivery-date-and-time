@@ -96,6 +96,7 @@ class THWDTP_Public {
 			'today_date_str'       => $wp_now->format('Y-m-d'),
 			'enable_specific_dates_only' =>  apply_filters('thwdtp_delivery_date_disabled_dates', false),
 			'default_locale'               => apply_filters('thwdtp_react_date_picker_locale','en'),
+			'include_current_time_slot' =>  apply_filters('thwdtp_include_current_time_slot', false),
 		);
 
 		wp_localize_script('thwdtp-public-script','thwdtp_public_var', $wdtp_var);	
@@ -425,7 +426,7 @@ class THWDTP_Public {
 	}
 	public function woo_checkout_fields( $checkout_fields ) {
 
-		if(is_checkout() || is_account_page() || is_admin()){
+		if(is_checkout() || is_account_page() || is_admin() || apply_filters('thwdtp_is_checkout', false)){
 			$fieldset = THWDTP_Utils::get_checkout_fieldset();
 		    $checkout_fields['order_specification'] = $fieldset;
 		}
@@ -531,7 +532,7 @@ class THWDTP_Public {
 
 		$order_id        = $order->get_id();
 		$checkout_fields = WC()->checkout->checkout_fields;
-		$custom_fields   = isset($checkout_fields['order_specification']) ? $checkout_fields['order_specification'] : array();
+		$custom_fields   = isset($checkout_fields['order_specification']) ? $checkout_fields['order_specification'] : THWDTP_Utils::get_checkout_fieldset();
 
 		$e_fields      = array();
 		foreach ($custom_fields as $field_key => $field){

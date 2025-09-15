@@ -164,7 +164,7 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 
 		wp_set_script_translations(
 			'delivery-fields-block-editor',
-			' order-delivery-fields-block',
+			'order-delivery-date-and-time',
 			dirname( __FILE__ ) . '/languages'
 		);
 	}
@@ -190,7 +190,7 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 
 		wp_set_script_translations(
 			'pickup-fields-block-editor',
-			'order-delivery-fields-block',
+			'order-delivery-date-and-time',
 			dirname( __FILE__ ) . '/languages'
 		);
 	}
@@ -237,7 +237,7 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 		);
 		wp_set_script_translations(
 			'delivery-fields-block-frontend',
-			'order-delivery-fields-block',
+			'order-delivery-date-and-time',
 			dirname( __FILE__ ) . '/languages'
 		);
 		// $wdtp_var = array(
@@ -289,7 +289,7 @@ use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
 		);
 		wp_set_script_translations(
 			'pickup-fields-block-frontend',
-			'order-delivery-fields-block',
+			'order-delivery-date-and-time',
 			dirname( __FILE__ ) . '/languages'
 		);
 	}

@@ -3,9 +3,9 @@ Contributors: ThemeHigh
 Donate link: https://themehigh.com/
 Tags: Order Delivery Date, WooCommerce Delivery Slots, WooCommerce Pickup Date, WooCommerce Delivery Time, Time Planner
 Requires at least: 5.3
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,14 @@ Join [Themehigh Community](https://www.facebook.com/groups/themehigh/) to get he
 10. Other settings
 
 == Changelog ==
+
+= 1.1.1 =
+* Fixed delivery date not showing issue.
+* Fixed timezone formatting issue in date handling.
+* Fixed validation error in block checkout.
+* Added German translation for calendar (locale update)
+* Added WooCommerce 10.1 compatibility.
+* Added WordPress 6.8 compatibility.
 
 = 1.1.0 =
 * Improved the Timepicker block in the Checkout block.
