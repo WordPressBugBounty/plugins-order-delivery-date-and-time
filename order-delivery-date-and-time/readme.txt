@@ -3,9 +3,9 @@ Contributors: ThemeHigh
 Donate link: https://themehigh.com/
 Tags: Order Delivery Date, WooCommerce Delivery Slots, WooCommerce Pickup Date, WooCommerce Delivery Time, Time Planner
 Requires at least: 5.3
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,10 @@ Join [Themehigh Community](https://www.facebook.com/groups/themehigh/) to get he
 10. Other settings
 
 == Changelog ==
+
+= 1.1.3 =
+* Added WooCommerce 10.8 compatibility.
+* Added WordPress 7.0 compatibility.
 
 = 1.1.2 =
 * Added WooCommerce 10.6 compatibility.
